@@ -1,5 +1,5 @@
 #include <stdio.h>
-int main(){
+int main){
 	int x = 9;
 	int a, b = 100, c, temp = 900;
 	float a = 100, b = 1238495.328434;
