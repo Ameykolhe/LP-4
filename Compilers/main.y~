@@ -1,0 +1,11 @@
+%{
+	#include <stdio.h>
+	extern int line;
+%}
+
+%token MACRO, HEADER, MAIN, DTYPE
+%start prog
+
+%%
+
+prog: 

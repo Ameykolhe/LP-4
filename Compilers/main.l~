@@ -1,0 +1,27 @@
+%{
+	#include<stdio.h>
+	int line=1;
+%}
+variable [a-zA-Z][a-zA-Z0-9]*
+number [0-9]+
+float {number}\.{number}
+type_keyword "int"|"float"|"void"|"char"|"double"
+init_assignment =
+assignment \+=|\-=|\*=|\/=
+logical_operator \&\&|\|\|
+bitwise_operator \&|\|
+arithmetic_operator \+|\-|\*|\/
+comparators ==|!=|<|>|<=|>=
+string_literal \"(\\.|[^"\\])*\"
+%%
+\t+ {}
+"#include" {return "MACRO";}
+"<".*">" {return "HEADER";}
+"main" {return "MAIN";}
+{type_keyword} {return "DTYPE";}
+. ;
+\n {line++;}
+%%
+int yywrap() {
+	return 1;
+}
